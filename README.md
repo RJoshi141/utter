@@ -27,17 +27,20 @@ No typing. No unlocking your phone. Just speak and it's saved.
 
 ## Demo
 
-### Watch app
-
-<p align="center">
-  <img src="Utter/Assets/watch-demo.gif" width="260" alt="Utter Watch App demo" />
-</p>
-
-### iPhone app — transcribe & organize
-
-<p align="center">
-  <img src="Utter/Assets/iPhone-demo.gif" width="280" alt="Utter iPhone App demo" />
-</p>
+<table align="center">
+  <tr>
+    <th align="center">Watch app</th>
+    <th align="center">iPhone app</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Utter/Assets/watch-demo.gif" width="260" alt="Utter Watch App demo" />
+    </td>
+    <td align="center">
+      <img src="Utter/Assets/iPhone-demo.gif" width="260" style="border-radius:40px;" alt="Utter iPhone App demo" />
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -45,13 +48,11 @@ No typing. No unlocking your phone. Just speak and it's saved.
 
 ### Watch — intro, recording & review
 
-<p align="center">
-  <img src="Utter/Assets/ultra-watch-frame1.png" width="220" alt="Watch intro screen" />
-  &nbsp;&nbsp;
-  <img src="Utter/Assets/ultra-watch-frame2.png" width="220" alt="Watch recording and review screens" />
-  &nbsp;&nbsp;
-  <img src="Utter/Assets/ultra-watch-frame3.png" width="220" alt="Watch syncing and confirmed screens" />
-</p>
+<img src="Utter/Assets/ultra-watch-frame1.png" height="420" alt="Watch intro screen" />
+
+<img src="Utter/Assets/ultra-watch-frame2.png" height="420" alt="Watch recording and review" />
+
+<img src="Utter/Assets/ultra-watch-frame3.png" height="420" alt="Watch syncing and confirmed" />
 
 ### iPhone — full workflow
 
@@ -89,7 +90,7 @@ Auto-detection is keyword-based. Phrases like "remind me", "tomorrow", "call" �
 Early sketches exploring different UI directions for the watch app before landing on the final design.
 
 <p align="center">
-  <img src="Utter/Assets/Design.png" width="700" alt="Watch app design explorations" />
+  <img src="Utter/Assets/Design.png" width="860" alt="Watch app design explorations" />
 </p>
 
 ---
