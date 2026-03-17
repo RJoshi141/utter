@@ -808,18 +808,22 @@ struct ContentView: View {
     }
 
     private func latestWatchRecordingURL() -> URL? {
-        let simulatorRoot = URL(fileURLWithPath: "/Users/ritikajoshi/Library/Developer/CoreSimulator/Devices/6DDAA3A3-9736-4604-BF7D-50785A8FB45C")
-        guard let enumerator = FileManager.default.enumerator(at: simulatorRoot, includingPropertiesForKeys: [.contentModificationDateKey, .isRegularFileKey], options: [.skipsHiddenFiles]) else { return nil }
-        var matches: [URL] = []
-        for case let fileURL as URL in enumerator {
-            guard fileURL.pathExtension == "m4a", fileURL.lastPathComponent.hasPrefix("utter-") else { continue }
-            matches.append(fileURL)
-        }
-        return matches.max {
-            let l = (try? $0.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? .distantPast
-            let r = (try? $1.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? .distantPast
-            return l < r
-        }
+        let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let folder = docs.appendingPathComponent("utter-recordings")
+
+        guard let files = try? FileManager.default.contentsOfDirectory(
+            at: folder,
+            includingPropertiesForKeys: [.contentModificationDateKey],
+            options: .skipsHiddenFiles
+        ) else { return nil }
+
+        return files
+            .filter { $0.pathExtension == "m4a" && $0.lastPathComponent.hasPrefix("utter-") }
+            .max {
+                let l = (try? $0.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? .distantPast
+                let r = (try? $1.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? .distantPast
+                return l < r
+            }
     }
 
     private let memosKey = "utter_saved_memos"

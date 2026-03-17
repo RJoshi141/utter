@@ -102,6 +102,11 @@
 			path = "UtterWatch Watch AppUITests";
 			sourceTree = "<group>";
 		};
+		1875C6132F68F167007B0ADC /* Assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +158,7 @@
 		1875C56E2F661382007B0ADC = {
 			isa = PBXGroup;
 			children = (
+				1875C6132F68F167007B0ADC /* Assets */,
 				1875C5792F661382007B0ADC /* Utter */,
 				1875C5892F661383007B0ADC /* UtterTests */,
 				1875C5932F661383007B0ADC /* UtterUITests */,
@@ -195,6 +201,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				1875C5792F661382007B0ADC /* Utter */,
+				1875C6132F68F167007B0ADC /* Assets */,
 			);
 			name = Utter;
 			packageProductDependencies = (

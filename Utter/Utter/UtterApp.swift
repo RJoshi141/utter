@@ -23,16 +23,17 @@ struct UtterApp: App {
 
 final class PhoneConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
     @Published var statusText = "Activating WatchConnectivity..."
+
     override init() {
         super.init()
-        
+
         if WCSession.isSupported() {
             let session = WCSession.default
             session.delegate = self
             session.activate()
         }
     }
-    
+
     func session(
         _ session: WCSession,
         activationDidCompleteWith activationState: WCSessionActivationState,
@@ -46,23 +47,23 @@ final class PhoneConnectivityManager: NSObject, ObservableObject, WCSessionDeleg
             print("WCSession activated on iPhone with state: \(activationState.rawValue)")
         }
     }
-    
+
     func sessionDidBecomeInactive(_ session: WCSession) { }
-    
+
     func sessionDidDeactivate(_ session: WCSession) { }
-    
+
     func session(
         _ session: WCSession,
-        didReceiveMessage message: [String : Any]
+        didReceiveMessage message: [String: Any]
     ) {
         DispatchQueue.main.async {
             print("Message from watch:", message)
         }
     }
-    
+
     func session(
         _ session: WCSession,
-        didReceiveApplicationContext applicationContext: [String : Any]
+        didReceiveApplicationContext applicationContext: [String: Any]
     ) {
         DispatchQueue.main.async {
             let action = applicationContext["action"] as? String ?? "unknown"
@@ -70,18 +71,37 @@ final class PhoneConnectivityManager: NSObject, ObservableObject, WCSessionDeleg
             print("ApplicationContext from watch:", applicationContext)
         }
     }
+
     func session(
         _ session: WCSession,
         didReceive file: WCSessionFile
     ) {
-        DispatchQueue.main.async {
-            let filename = file.fileURL.lastPathComponent
-            self.statusText = "Received file: \(filename)"
-            print("Received file from watch:", file.fileURL)
+        let filename = file.fileURL.lastPathComponent
+
+        // Save to Documents/utter-recordings/
+        let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let folder = docs.appendingPathComponent("utter-recordings", isDirectory: true)
+
+        do {
+            try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+            let destination = folder.appendingPathComponent(filename)
+
+            // Remove existing file at destination if present
+            if FileManager.default.fileExists(atPath: destination.path) {
+                try FileManager.default.removeItem(at: destination)
+            }
+
+            try FileManager.default.copyItem(at: file.fileURL, to: destination)
+
+            DispatchQueue.main.async {
+                self.statusText = "Saved: \(filename)"
+                print("Saved watch file to:", destination.path)
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.statusText = "Failed to save: \(error.localizedDescription)"
+                print("Failed to save watch file:", error.localizedDescription)
+            }
         }
     }
-    
-    
 }
-
-
