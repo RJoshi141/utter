@@ -48,11 +48,11 @@ No typing. No unlocking your phone. Just speak and it's saved.
 
 ### Watch — intro, recording & review
 
-<img src="Utter/Assets/ultra-watch-frame1.png" height="420" alt="Watch intro screen" />
+<img src="Utter/Assets/ultra-watch-frame1.png" height="320" alt="Watch intro screen" />
 
-<img src="Utter/Assets/ultra-watch-frame2.png" height="420" alt="Watch recording and review" />
+<img src="Utter/Assets/ultra-watch-frame2.png" height="320" alt="Watch recording and review" />
 
-<img src="Utter/Assets/ultra-watch-frame3.png" height="420" alt="Watch syncing and confirmed" />
+<img src="Utter/Assets/ultra-watch-frame3.png" height="320" alt="Watch syncing and confirmed" />
 
 ### iPhone — full workflow
 
