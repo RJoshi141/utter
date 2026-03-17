@@ -25,14 +25,16 @@ No typing. No unlocking your phone. Just speak and it's saved.
 
 <table width="100%">
   <tr>
+    <th width="50%" align="center"><h3>Watch app</h3></th>
+    <th width="50%" align="center"><h3>iPhone app</h3></th>
+  </tr>
+  <tr>
     <td width="50%" align="center" valign="top">
-      <b>⌚ Watch app</b><br/>
       Hold to record a thought, watch the waveform as you speak, then review and send it straight to your iPhone — all from your wrist.
       <br/><br/>
-      <img src="Utter/Assets/watch-demo.gif" width="260" alt="Utter Watch App demo" />
+      <img src="Utter/Assets/watch-demo.gif" width="200" alt="Utter Watch App demo" />
     </td>
     <td width="50%" align="center" valign="top">
-      <b>📱 iPhone app</b><br/>
       Import the latest watch recording, transcribe it with one tap, review the auto-detected category, and save it to your inbox.
       <br/><br/>
       <img src="Utter/Assets/iPhone-demo.gif" width="260" style="border-radius:40px;" alt="Utter iPhone App demo" />
